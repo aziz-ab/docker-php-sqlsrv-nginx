@@ -1,4 +1,4 @@
-FROM kooldev/php:7.4-nginx
+FROM bojisc/php7.4-nginx:alpine
 
 # https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15#alpine17
 
@@ -15,7 +15,7 @@ RUN set -xe \
     && docker-php-ext-install pdo_dblib \
     && docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr \
     && docker-php-ext-install pdo_odbc \
-    && pecl install sqlsrv pdo_sqlsrv \
+    && pecl install sqlsrv-5.8.1 pdo_sqlsrv-5.8.1 \
     && echo extension=pdo_sqlsrv.so >> `php --ini | grep "Scan for additional .ini files" | sed -e "s|.*:\s*||"`/10_pdo_sqlsrv.ini \
     && echo extension=sqlsrv.so >> `php --ini | grep "Scan for additional .ini files" | sed -e "s|.*:\s*||"`/00_sqlsrv.ini \
     # && docker-php-ext-enable --ini-name 30-sqlsrv.ini sqlsrv \

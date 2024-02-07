@@ -1,4 +1,4 @@
-FROM kooldev/php:8.1-nginx
+FROM bojisc/php8.1-nginx:alpine
 
 # https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15#alpine17
 
